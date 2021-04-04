@@ -2,6 +2,9 @@
   <Drawer :active="showDrawer" v-on:close-drawer="()=>{ showDrawer = false }"></Drawer>
   <div class="view login" v-if="state.username === '' || state.username === null">
 	<h1 class="main-title">Welcome to Vue Chat</h1>
+	<div class="logo-container">
+		<img src="./assets/logo.png" alt="logo">
+	</div>
     <form class="login-form" @submit.prevent="login">
       <div class="form-inner">
         <h1>Login</h1>
@@ -13,6 +16,7 @@
         <p>Need an account ? <span class="register-link" @click="()=>{ showDrawer = true }">Register here</span></p>
       </div>
     </form>
+	<footer class="footer">powered by Vue.js and Firebase</footer>
   </div>
   <div class="view chat" v-else>
     <header>
@@ -131,8 +135,26 @@ export default {
 	color: #42b983;
 	padding: 10px;
 	border-radius: 8px;
-	margin-bottom: 10vh;
+	margin-bottom: 5vh;
 	font-weight: 700;
+}
+.logo-container {
+	background-color: #FFF;
+	border-radius: 100px;
+	display: grid;
+	place-items: center;
+	height: 80px;
+	width: 80px;
+	margin-bottom: 4vh;
+
+	img {
+		height: 60px;
+		transform: translateY(5px);
+	}
+}
+.footer {
+	color: #FFF;
+	transform: translateY(8vh);
 }
 .view {
 	display: flex;
@@ -152,7 +174,7 @@ export default {
 			.form-inner {
 				display: block;
 				background-color: #FFF;
-				padding: 50px 15px;
+				padding: 40px 15px;
 				border-radius: 16px;
 				box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 				h1 {
